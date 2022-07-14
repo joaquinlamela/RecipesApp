@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
-const NavLink = styled.a`
+const NavLink = styled(Link)`
   color: #fff;
   display: flex;
   align-items: center;

@@ -9,6 +9,10 @@ const NavbarContainer = styled.div`
   width: 100%;
   padding: 0 24px;
 
+  ${MEDIA.xs`
+    max-width: 1100px;
+  `}
+
   ${MEDIA.xxl`
     max-width: 1500px;
   `}

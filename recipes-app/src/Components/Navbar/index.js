@@ -20,7 +20,7 @@ const Navbar = () => {
           <NavMenu>
             <NavItem>
               <NavLink
-                to="about"
+                to="/"
                 smooth={true}
                 duration={500}
                 spy={true}
@@ -32,7 +32,7 @@ const Navbar = () => {
             </NavItem>
             <NavItem>
               <NavLink
-                to="discover"
+                to="/random"
                 smooth={true}
                 duration={500}
                 spy={true}

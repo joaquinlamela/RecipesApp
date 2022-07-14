@@ -1,13 +1,20 @@
 import styled from "styled-components";
 
+import { MEDIA } from "../../../layout";
+
 const NavMenu = styled.ul`
   display: flex;
   align-items: center;
   list-style: none;
   text-align: center;
-  @media screen and (max-width: 768px) {
+
+  ${MEDIA.xs`
     display: none;
-  }
+  `}
+
+  ${MEDIA.tb`
+    display: flex;
+  `}
 `;
 
 export default NavMenu;
