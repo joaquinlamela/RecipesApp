@@ -2,21 +2,18 @@ import styled from "styled-components";
 
 import { MEDIA } from "../../../layout";
 
-const NavMenu = styled.ul`
+const SocialIcons = styled.div`
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  list-style: none;
-  text-align: center;
-  gap: 60px;
+  gap: 40px;
 
   ${MEDIA.xs`
     display: none;
   `}
 
-  ${MEDIA.tb`
+  ${MEDIA.lg`
     display: flex;
   `}
 `;
-
-export default NavMenu;
+export default SocialIcons;

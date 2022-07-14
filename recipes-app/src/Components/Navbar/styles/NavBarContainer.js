@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { MEDIA } from "../../../layout";
 
 const NavbarContainer = styled.div`
   display: flex;
@@ -9,13 +8,10 @@ const NavbarContainer = styled.div`
   width: 100%;
   padding: 0 24px;
 
-  ${MEDIA.xs`
-    max-width: 1100px;
-  `}
-
-  ${MEDIA.xxl`
-    max-width: 1500px;
-  `}
+  a::after {
+    content: attr(data-end);
+    color: #ff7426;
+  }
 `;
 
 export default NavbarContainer;
