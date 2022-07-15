@@ -12,6 +12,11 @@ const NavbarContainer = styled.div`
     content: attr(data-end);
     color: #ff7426;
   }
+
+  a:hover::after {
+    content: attr(data-end);
+    color: #000000;
+  }
 `;
 
 export default NavbarContainer;

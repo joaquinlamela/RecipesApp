@@ -12,6 +12,10 @@ const NavLogo = styled(LinkR)`
   font-size: 24px;
   line-height: 30px;
   color: #000000;
+
+  :hover {
+    color: #ff7426;
+  }
 `;
 
 export default NavLogo;
