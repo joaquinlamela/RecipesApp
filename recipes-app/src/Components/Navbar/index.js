@@ -46,7 +46,7 @@ const Navbar = () => {
             </NavItem>
             <NavItem>
               <NavLink
-                to="/random"
+                to="/contact"
                 smooth={true}
                 duration={500}
                 spy={true}
