@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { MEDIA } from "../../../layout";
 
 const Container = styled.div`
   display: flex;
@@ -8,8 +9,15 @@ const Container = styled.div`
   padding-top: 40px;
 
   .swiper {
-    width: 1200px;
-    height: 640px;
+    ${MEDIA.xl`
+      width: 1000px;
+      height: 570px;
+    `}
+
+    ${MEDIA.xxl`
+      width: 1200px;
+      height: 640px;
+    `}
   }
 
   .swiper-slide {

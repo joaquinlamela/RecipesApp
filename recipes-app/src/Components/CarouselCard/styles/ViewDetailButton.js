@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { MEDIA } from "../../../layout";
 
 const ViewDetailButton = styled.button`
   display: flex;
@@ -6,8 +7,6 @@ const ViewDetailButton = styled.button`
   justify-content: center;
   background: #000000;
   border-radius: 16px;
-  width: 180px;
-  height: 60px;
   font-family: "Inter";
   font-weight: 600;
   font-size: 14px;
@@ -24,6 +23,15 @@ const ViewDetailButton = styled.button`
   :hover {
     background: #ff7426;
   }
+  ${MEDIA.xl`
+    width: 160px;
+    height: 50px;
+  `}
+
+  ${MEDIA.xxl`
+    width: 180px;
+    height: 60px;
+  `}
 `;
 
 export default ViewDetailButton;
