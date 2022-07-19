@@ -15,6 +15,7 @@ import InputContainer from "./styles/InputContainer";
 import ContactContainer from "./styles/ContactContainer";
 import TextAreaWithLabel from "../../Components/TextAreaWithLabel";
 import Button from "../../Components/Button";
+import NewsletterCard from "../../Components/NewsletterCard";
 
 const Contact = () => {
   return (
@@ -62,6 +63,7 @@ const Contact = () => {
           Submit <BiSend />
         </Button>
       </FormContainer>
+      <NewsletterCard />
     </Container>
   );
 };

@@ -5,7 +5,7 @@ const FooterContainer = styled.footer`
   display: flex;
   flex-direction: column;
   margin-top: auto;
-  padding: 80px 60px;
+  padding: 80px 60px 10px;
 
   a::after {
     content: attr(data-end);

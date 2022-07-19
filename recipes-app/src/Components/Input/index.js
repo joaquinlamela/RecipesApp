@@ -1,10 +1,11 @@
 import styled from "styled-components";
 
 const Input = styled.input`
-  background: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: ${(props) => (props.transparent ? "transparent" : "#ffffff")};
+  border: ${(props) =>
+    props.noBorder ? "none" : "1px solid rgba(0, 0, 0, 0.1)"};
   border-radius: 16px;
-  width: 400px;
+  width: ${(props) => (props.small ? "300px" : "400px")};
   height: 60px;
   font-family: "Inter";
   font-weight: 400;
@@ -17,12 +18,12 @@ const Input = styled.input`
   padding: 18px 20px;
 
   :hover {
-    border: 1px solid #ff7426;
+    border: ${(props) => (props.noBorder ? "none" : "1px solid #ff7426")};
   }
 
   :focus {
     outline: none;
-    border: 1px solid #ff7426;
+    border: ${(props) => (props.noBorder ? "none" : "1px solid #ff7426")};
   }
 `;
 
