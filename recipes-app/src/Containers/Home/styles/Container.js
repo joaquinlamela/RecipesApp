@@ -9,6 +9,11 @@ const Container = styled.div`
   padding-top: 40px;
 
   .swiper {
+    ${MEDIA.lg`
+      width: 725px;
+      height: 800px;
+    `}
+
     ${MEDIA.xl`
       width: 1000px;
       height: 570px;
@@ -22,11 +27,16 @@ const Container = styled.div`
 
   .swiper-slide {
     display: flex;
+    flex-direction: column;
     border-radius: 18px;
     font-size: 22px;
     font-weight: bold;
     color: #fff;
     border-radius: 48px;
+
+    ${MEDIA.xl`
+      flex-direction: row;
+    `}
   }
 
   .swiper-slide {

@@ -23,7 +23,8 @@ const ViewDetailButton = styled.button`
   :hover {
     background: #ff7426;
   }
-  ${MEDIA.xl`
+
+  ${MEDIA.lg`
     width: 160px;
     height: 50px;
   `}
