@@ -10,9 +10,14 @@ const RecipeDescription = styled.p`
   max-width: 520px;
   text-align: justify;
 
-  ${MEDIA.lg`
+  ${MEDIA.tb`
     align-self: center;
     text-align: center;
+    max-width: 400px;
+  `}
+
+  ${MEDIA.lg`
+    max-width: 520px;
   `}
 
   ${MEDIA.xl`

@@ -5,12 +5,12 @@ const RecipeToggle = styled.div`
   display: flex;
   gap: 16px;
 
-  ${MEDIA.lg`
+  ${MEDIA.tb`
     align-self: center;
   `}
 
   ${MEDIA.xl`
-  align-self: start;
+    align-self: start;
   `}
 `;
 

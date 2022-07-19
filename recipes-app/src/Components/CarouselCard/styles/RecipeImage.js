@@ -4,6 +4,10 @@ import { MEDIA } from "../../../layout";
 const RecipeImage = styled.img`
   display: flex;
 
+  ${MEDIA.tb`
+    height: 475px;
+  `}
+
   ${MEDIA.xl`
     max-width: 450px;
     height: 570px;

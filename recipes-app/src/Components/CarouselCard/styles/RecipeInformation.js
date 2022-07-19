@@ -6,9 +6,13 @@ const RecipeInformation = styled.div`
   flex-direction: column;
   padding: 50px;
 
-  ${MEDIA.lg`
+  ${MEDIA.tb`
     gap: 15px;
     padding: 30px 40px 20px;
+  `}
+
+  ${MEDIA.lg`
+    gap: 15px;
   `}
 
   ${MEDIA.xl`

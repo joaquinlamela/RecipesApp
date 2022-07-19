@@ -5,11 +5,17 @@ const RecipeName = styled.h1`
   font-family: "Inter";
   font-weight: 600;
   color: #000000;
+  letter-spacing: -0.04em;
+
+  ${MEDIA.tb`
+    font-size: 30px;
+    line-height: 70px;
+    align-self: center;
+  `}
 
   ${MEDIA.lg`
     font-size: 42px;
     line-height: 52px;
-    letter-spacing: -0.04em;
     align-self: center;
   `}
 
@@ -17,14 +23,11 @@ const RecipeName = styled.h1`
     max-width: 520px;
     font-size: 56px;
     line-height: 77px;
-    letter-spacing: -0.04em;
     align-self: start;
   `}
 
   ${MEDIA.xxl`
     font-size: 64px;
-    line-height: 77px;
-    letter-spacing: -0.04em;
   `}
 `;
 

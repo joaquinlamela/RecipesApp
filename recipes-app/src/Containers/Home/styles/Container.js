@@ -9,6 +9,11 @@ const Container = styled.div`
   padding-top: 40px;
 
   .swiper {
+    ${MEDIA.tb`
+      width: 510px;
+      height: 880px;
+    `}
+
     ${MEDIA.lg`
       width: 725px;
       height: 800px;
