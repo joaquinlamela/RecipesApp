@@ -8,6 +8,12 @@ const SocialIcons = styled.div`
   align-items: center;
   gap: 40px;
 
+  ${(props) =>
+    props.left &&
+    `
+    margin-left: auto;
+  `}
+
   ${MEDIA.xs`
     display: none;
   `}
