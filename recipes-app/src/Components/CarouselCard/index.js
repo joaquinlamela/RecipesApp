@@ -31,7 +31,7 @@ const CarouselCard = () => {
   return (
     <Container>
       <RecipeInformation>
-        <HotRecipe>📜 Hot recipe</HotRecipe>
+        <HotRecipe>📜 Random recipe</HotRecipe>
         <RecipeName>Spicy delicious chicken wings</RecipeName>
         <RecipeDescription>
           Lorem ipsum dolor sit amet, consectetuipisicing elit, sed do eiusmod
