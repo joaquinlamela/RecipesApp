@@ -10,6 +10,11 @@ const Container = styled.div`
 
   .swiper {
     ${MEDIA.tb`
+      width: 380px;
+      height: 880px;
+    `}
+
+    ${MEDIA.md`
       width: 510px;
       height: 880px;
     `}

@@ -8,6 +8,12 @@ const RecipeName = styled.h1`
   letter-spacing: -0.04em;
 
   ${MEDIA.tb`
+    font-size: 40px;
+    line-height: 50px;
+    align-self: center;
+  `}
+
+  ${MEDIA.md`
     font-size: 30px;
     line-height: 70px;
     align-self: center;

@@ -5,6 +5,10 @@ const RecipeImage = styled.img`
   display: flex;
 
   ${MEDIA.tb`
+    height: 400px;
+  `}
+
+  ${MEDIA.md`
     height: 475px;
   `}
 
