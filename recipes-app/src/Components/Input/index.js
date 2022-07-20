@@ -26,6 +26,14 @@ const Input = styled.input`
     border: ${(props) => (props.noBorder ? "none" : "1px solid #ff7426")};
   }
 
+  ${MEDIA.xs`
+    width: ${(props) => (props.small ? "250px" : "300px")};
+  `}
+
+  ${MEDIA.tb`
+    width: ${(props) => (props.small ? "200px" : "250px")};
+  `}
+
   ${MEDIA.tb`
     width: ${(props) => (props.small ? "200px" : "250px")};
   `}

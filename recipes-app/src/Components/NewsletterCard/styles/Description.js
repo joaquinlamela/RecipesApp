@@ -9,6 +9,7 @@ const Description = styled.div`
   line-height: 28px;
   text-align: center;
   color: rgba(0, 0, 0, 0.6);
+  max-width: 270px;
 
   ${MEDIA.tb`
     max-width: 350px;

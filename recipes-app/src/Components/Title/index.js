@@ -9,6 +9,10 @@ const Title = styled.span`
   letter-spacing: -0.04em;
   color: #000000;
 
+  ${MEDIA.xs`
+    font-size: ${(props) => (props.small ? "22px" : "40px")};
+  `}
+
   ${MEDIA.tb`
     font-size: ${(props) => (props.small ? "36px" : "48px")};
   `}
