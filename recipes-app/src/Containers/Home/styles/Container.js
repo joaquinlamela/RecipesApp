@@ -3,10 +3,11 @@ import { MEDIA } from "../../../layout";
 
 const Container = styled.div`
   display: flex;
-  flex-direction: row;
   flex-grow: 1;
   overflow-y: hidden;
   padding-top: 40px;
+
+  ${(props) => props.isSmallScreen && `flex-direction: column; gap: 20px;`}
 
   .swiper {
     ${MEDIA.tb`

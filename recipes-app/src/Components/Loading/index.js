@@ -16,7 +16,7 @@ export default function Loading({ id }) {
       autoplay: true,
       animationData: Data,
     });
-  }, []);
+  });
 
   return (
     <FlexContainer

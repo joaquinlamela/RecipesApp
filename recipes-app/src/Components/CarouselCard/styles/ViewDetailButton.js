@@ -24,6 +24,11 @@ const ViewDetailButton = styled.button`
     background: #ff7426;
   }
 
+  ${MEDIA.xs`
+    width: 140px;
+    height: 50px;
+  `}
+
   ${MEDIA.tb`
     width: 140px;
     height: 50px;

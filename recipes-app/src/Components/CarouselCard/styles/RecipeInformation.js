@@ -6,6 +6,11 @@ const RecipeInformation = styled.div`
   flex-direction: column;
   padding: 50px;
 
+  ${MEDIA.xs`
+    padding: 20px;
+    gap: 25px;
+  `}
+
   ${MEDIA.tb`
     gap: 15px;
     padding: 30px 40px 20px;

@@ -5,7 +5,7 @@ const RecipeToggle = styled.div`
   display: flex;
   gap: 16px;
 
-  ${MEDIA.tb`
+  ${MEDIA.xs`
     align-self: center;
   `}
 
