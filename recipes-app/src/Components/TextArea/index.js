@@ -1,10 +1,10 @@
 import styled from "styled-components";
+import { MEDIA } from "../../layout";
 
 const TextArea = styled.textarea`
   background: #ffffff;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 16px;
-  width: 820px;
   height: 200px;
   font-family: "Inter";
   font-weight: 400;
@@ -25,6 +25,14 @@ const TextArea = styled.textarea`
     outline: none;
     border: 1px solid #ff7426;
   }
+
+  ${MEDIA.md`
+    width: 625px;
+  `}
+
+  ${MEDIA.lg`
+    width: 820px;
+  `}
 `;
 
 export default TextArea;
