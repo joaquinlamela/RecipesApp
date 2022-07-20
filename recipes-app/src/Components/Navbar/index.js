@@ -1,5 +1,7 @@
 import React from "react";
 
+import PropTypes from "prop-types";
+
 import { FaInstagram, FaYoutube, FaLinkedin } from "react-icons/fa";
 
 import Nav from "./styles/Nav";
@@ -10,8 +12,10 @@ import NavItem from "./styles/NavItem";
 import NavLink from "./styles/NavLink";
 import SocialIcons from "./styles/SocialIcons";
 import SocialIconLink from "./styles/SocialIconLink";
+import ToggleIcon from "./styles/ToggleIcon";
+import MenuIcon from "./styles/MenuIcon";
 
-const Navbar = () => {
+const Navbar = ({ openSidebar }) => {
   return (
     <>
       <Nav>
@@ -57,6 +61,11 @@ const Navbar = () => {
               </NavLink>
             </NavItem>
           </NavMenu>
+
+          <MenuIcon onClick={openSidebar}>
+            <ToggleIcon />
+          </MenuIcon>
+
           <SocialIcons>
             <SocialIconLink
               href="https://www.instagram.com/octobotdev/"
@@ -84,6 +93,10 @@ const Navbar = () => {
       </Nav>
     </>
   );
+};
+
+Navbar.propTypes = {
+  openSidebar: PropTypes.func,
 };
 
 export default Navbar;
