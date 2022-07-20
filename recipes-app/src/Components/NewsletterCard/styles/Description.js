@@ -10,6 +10,10 @@ const Description = styled.div`
   text-align: center;
   color: rgba(0, 0, 0, 0.6);
 
+  ${MEDIA.tb`
+    max-width: 350px;
+  `}
+
   ${MEDIA.md`
     max-width: 400px;
   `}
