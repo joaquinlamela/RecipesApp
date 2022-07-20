@@ -9,7 +9,7 @@ const SidebarLink = styled(Link)`
   text-decoration: none;
   list-style: none;
   transition: 0.2s ease-in-out;
-  color: black;
+  color: #000000;
   cursor: pointer;
   &:hover {
     color: #1f61eb;
@@ -20,7 +20,6 @@ const SidebarLink = styled(Link)`
   font-size: 30px;
   line-height: 19px;
   letter-spacing: -0.02em;
-  text-decoration: none;
 `;
 
 export default SidebarLink;
