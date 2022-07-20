@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { MEDIA } from "../../../layout";
 
 const Container = styled.div`
   display: flex;
@@ -8,8 +9,16 @@ const Container = styled.div`
   height: 442px;
   background: #e7f9fd;
   border-radius: 60px;
-  width: 1280px;
-  padding: 80px 0px;
+
+  ${MEDIA.lg`
+    width: 900px;
+    padding: 80px 0px;
+    `}
+
+  ${MEDIA.xl`
+    width: 1280px;
+    padding: 80px 0px;
+    `}
 `;
 
 export default Container;
