@@ -1,10 +1,29 @@
 import styled from "styled-components";
+import { MEDIA } from "../../../layout";
 
 const RecipeInformation = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 26px;
   padding: 50px;
+
+  ${MEDIA.xs`
+    padding: 20px;
+    gap: 25px;
+  `}
+
+  ${MEDIA.tb`
+    gap: 15px;
+    padding: 30px 40px 20px;
+  `}
+
+  ${MEDIA.lg`
+    gap: 15px;
+  `}
+
+  ${MEDIA.xl`
+    gap: 26px;
+    padding: 50px;
+  `}
 `;
 
 export default RecipeInformation;

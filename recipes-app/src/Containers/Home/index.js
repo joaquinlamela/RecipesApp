@@ -11,15 +11,20 @@ import CarouselCard from "../../Components/CarouselCard";
 
 import Container from "./styles/Container";
 import Loading from "../../Components/Loading";
+import useWindowSize from "../../Hooks/useWindowSize";
+import { BASE } from "../../layout";
 
 const Home = () => {
   const isLoading = false;
+  const [width] = useWindowSize();
+
+  const isSmallScreen = width < BASE.breakpoints.tb;
 
   return (
-    <Container>
+    <Container isSmallScreen={isSmallScreen}>
       {isLoading ? (
         <Loading id="loading-icon" />
-      ) : (
+      ) : !isSmallScreen ? (
         <Swiper
           effect={"cards"}
           grabCursor={true}
@@ -38,6 +43,14 @@ const Home = () => {
             <CarouselCard />
           </SwiperSlide>
         </Swiper>
+      ) : (
+        <>
+          <CarouselCard />
+
+          <CarouselCard />
+
+          <CarouselCard />
+        </>
       )}
     </Container>
   );

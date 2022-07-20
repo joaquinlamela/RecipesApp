@@ -1,11 +1,11 @@
 import styled from "styled-components";
+import { MEDIA } from "../../layout";
 
 const Input = styled.input`
   background: ${(props) => (props.transparent ? "transparent" : "#ffffff")};
   border: ${(props) =>
     props.noBorder ? "none" : "1px solid rgba(0, 0, 0, 0.1)"};
   border-radius: 16px;
-  width: ${(props) => (props.small ? "300px" : "400px")};
   height: 60px;
   font-family: "Inter";
   font-weight: 400;
@@ -25,6 +25,26 @@ const Input = styled.input`
     outline: none;
     border: ${(props) => (props.noBorder ? "none" : "1px solid #ff7426")};
   }
+
+  ${MEDIA.xs`
+    width: ${(props) => (props.small ? "250px" : "300px")};
+  `}
+
+  ${MEDIA.tb`
+    width: ${(props) => (props.small ? "200px" : "250px")};
+  `}
+
+  ${MEDIA.tb`
+    width: ${(props) => (props.small ? "200px" : "250px")};
+  `}
+
+  ${MEDIA.md`
+    width: ${(props) => (props.small ? "250px" : "300px")};
+  `}
+
+  ${MEDIA.lg`
+    width: ${(props) => (props.small ? "300px" : "400px")};
+  `}
 `;
 
 export default Input;

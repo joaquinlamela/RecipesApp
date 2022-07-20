@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { MEDIA } from "../../layout";
 
 const Button = styled.button`
   display: flex;
@@ -7,8 +8,8 @@ const Button = styled.button`
   text-align: center;
   background: #000000;
   border-radius: 16px;
-  width: 180px;
-  height: 60px;
+  width: 160px;
+  height: 45px;
   font-family: "Inter";
   font-style: normal;
   font-weight: 600;
@@ -25,6 +26,17 @@ const Button = styled.button`
   :hover {
     background: #ff7426;
   }
+
+  ${MEDIA.md`
+    height: 50px;
+    width: 180px;
+    border-radius: 16px;
+  `}
+
+  ${MEDIA.lg`
+    height: 60px;
+    width: 180px;
+  `}
 `;
 
 export default Button;

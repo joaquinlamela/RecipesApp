@@ -1,8 +1,10 @@
 import styled from "styled-components";
 
+import { MEDIA } from "../../../layout";
+
 const HotRecipe = styled.div`
   display: flex;
-  background: #ffffff;
+  background: #c9c5b7;
   border-radius: 38px;
   width: 140px;
   height: 45px;
@@ -15,6 +17,10 @@ const HotRecipe = styled.div`
   line-height: 17px;
   letter-spacing: -0.02em;
   color: #000000;
+
+  ${MEDIA.tb`
+    background: #ffffff;
+  `}
 `;
 
 export default HotRecipe;
