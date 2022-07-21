@@ -15,8 +15,6 @@ import RecipeFooter from "./styles/RecipeFooter";
 import UpdatedDate from "./styles/UpdatedDate";
 import RecipeImage from "./styles/RecipeImage";
 
-import RecipePhoto from "../../Images/baked-chicken-wings-asian-style-tomatoes-sauce-plate 1.png";
-
 import { HiClock } from "react-icons/hi";
 import { GiForkKnifeSpoon } from "react-icons/gi";
 import { AiOutlineArrowRight } from "react-icons/ai";
