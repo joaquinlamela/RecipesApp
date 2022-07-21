@@ -1,8 +1,9 @@
-import React from "react";
+/* eslint-disable no-unused-vars */
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect, useState } from "react";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/effect-cards";
 import { EffectCards } from "swiper";
@@ -13,12 +14,39 @@ import Container from "./styles/Container";
 import Loading from "../../Components/Loading";
 import useWindowSize from "../../Hooks/useWindowSize";
 import { BASE } from "../../layout";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { recipeListAtom } from "../../recoil/atom/recipesAtom";
+import { axiosInstance } from "../../utils/axios";
 
 const Home = () => {
-  const isLoading = false;
   const [width] = useWindowSize();
-
   const isSmallScreen = width < BASE.breakpoints.tb;
+  const [isLoading, setIsLoading] = useState(true);
+
+  const [_, setRecipeList] = useRecoilState(recipeListAtom);
+
+  const requestRecipe = async () => {
+    setIsLoading(true);
+    const recipes = [];
+    const response = await axiosInstance.get(
+      `random?apiKey=${process.env.REACT_APP_SPOONACULAR_API_KEY}`
+    );
+    recipes.push(response.data.recipes[0]);
+    // for (let i = 0; i < 3; i++) {
+    //   const response = await axiosInstance.get(
+    //     `random?apiKey=${process.env.REACT_APP_SPOONACULAR_API_KEY}`
+    //   );
+    //   recipes.push(response.data.recipes[0]);
+    // }
+    setRecipeList(recipes);
+    setIsLoading(false);
+  };
+
+  const recipes = useRecoilValue(recipeListAtom);
+
+  useEffect(() => {
+    requestRecipe();
+  }, []);
 
   return (
     <Container isSmallScreen={isSmallScreen}>
@@ -32,24 +60,24 @@ const Home = () => {
           className="mySwiper"
         >
           <SwiperSlide>
-            <CarouselCard />
+            <CarouselCard recipe={recipes[0]} />
           </SwiperSlide>
 
           <SwiperSlide>
-            <CarouselCard />
+            <CarouselCard recipe={recipes[0]} />
           </SwiperSlide>
 
           <SwiperSlide>
-            <CarouselCard />
+            <CarouselCard recipe={recipes[0]} />
           </SwiperSlide>
         </Swiper>
       ) : (
         <>
-          <CarouselCard />
+          <CarouselCard recipe={recipes[0]} />
 
-          <CarouselCard />
+          <CarouselCard recipe={recipes[0]} />
 
-          <CarouselCard />
+          <CarouselCard recipe={recipes[0]} />
         </>
       )}
     </Container>
