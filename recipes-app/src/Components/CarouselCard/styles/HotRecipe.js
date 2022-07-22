@@ -8,6 +8,7 @@ const HotRecipe = styled.div`
   border-radius: 38px;
   width: 140px;
   height: 45px;
+  min-height: 45px;
   justify-content: center;
   align-items: center;
   filter: drop-shadow(10px 20px 40px rgba(41, 64, 70, 0.1));

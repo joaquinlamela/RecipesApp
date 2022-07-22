@@ -1,5 +1,7 @@
 import React from "react";
 
+import PropTypes from "prop-types";
+
 import Container from "./styles/Container";
 import RecipeInformation from "./styles/RecipeInformation";
 import HotRecipe from "./styles/HotRecipe";
@@ -13,13 +15,11 @@ import RecipeFooter from "./styles/RecipeFooter";
 import UpdatedDate from "./styles/UpdatedDate";
 import RecipeImage from "./styles/RecipeImage";
 
-import RecipePhoto from "../../Images/baked-chicken-wings-asian-style-tomatoes-sauce-plate 1.png";
-
 import { HiClock } from "react-icons/hi";
 import { GiForkKnifeSpoon } from "react-icons/gi";
 import { AiOutlineArrowRight } from "react-icons/ai";
 
-const CarouselCard = () => {
+const CarouselCard = ({ recipe }) => {
   const getCurrentDate = () => {
     let newDate = new Date();
     let date = newDate.getDate();
@@ -28,27 +28,39 @@ const CarouselCard = () => {
 
     return `${month < 10 ? `0${month}` : `${month}`}/${date}/${year}`;
   };
+
+  const getFoodType = () => {
+    if (recipe.vegetarian) return "Vegetarian";
+    if (recipe.vegan) return "Vegan";
+    return "Not vegan";
+  };
+
+  const getDescription = () => {
+    let description = recipe.summary;
+    const index = description.indexOf(".");
+    description = description.substring(0, index);
+    description = description.replace(/<\/?[^>]+(>|$)/g, "");
+    return description;
+  };
+
   return (
     <Container>
       <RecipeInformation>
         <HotRecipe>📜 Random recipe</HotRecipe>
-        <RecipeName>Spicy delicious chicken wings</RecipeName>
-        <RecipeDescription>
-          Lorem ipsum dolor sit amet, consectetuipisicing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqut enim ad minim
-        </RecipeDescription>
+        <RecipeName>{recipe.title}</RecipeName>
+        <RecipeDescription>{getDescription()}.</RecipeDescription>
         <RecipeToggle>
           <Toggle>
             <Icon>
               <HiClock />
             </Icon>
-            30 Minutes
+            {recipe.readyInMinutes} Minutes
           </Toggle>
           <Toggle>
             <Icon>
               <GiForkKnifeSpoon />
             </Icon>
-            Chicken
+            {getFoodType()}
           </Toggle>
         </RecipeToggle>
 
@@ -62,9 +74,13 @@ const CarouselCard = () => {
           </ViewDetailButton>
         </RecipeFooter>
       </RecipeInformation>
-      <RecipeImage src={RecipePhoto} />
+      <RecipeImage src={recipe.image} />
     </Container>
   );
+};
+
+CarouselCard.propTypes = {
+  recipe: PropTypes.object,
 };
 
 export default CarouselCard;

@@ -13,12 +13,6 @@ const RecipeName = styled.h1`
     align-self: center;
   `}
 
-  ${MEDIA.md`
-    font-size: 30px;
-    line-height: 70px;
-    align-self: center;
-  `}
-
   ${MEDIA.lg`
     font-size: 42px;
     line-height: 52px;
@@ -27,13 +21,12 @@ const RecipeName = styled.h1`
 
   ${MEDIA.xl`
     max-width: 520px;
-    font-size: 56px;
-    line-height: 77px;
+    font-size: 46px;
     align-self: start;
   `}
 
   ${MEDIA.xxl`
-    font-size: 64px;
+    font-size: 56px;
   `}
 `;
 
