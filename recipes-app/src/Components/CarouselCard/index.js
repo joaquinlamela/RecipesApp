@@ -48,7 +48,7 @@ const CarouselCard = ({ recipe }) => {
       <RecipeInformation>
         <HotRecipe>📜 Random recipe</HotRecipe>
         <RecipeName>{recipe.title}</RecipeName>
-        <RecipeDescription>{getDescription()}</RecipeDescription>
+        <RecipeDescription>{getDescription()}.</RecipeDescription>
         <RecipeToggle>
           <Toggle>
             <Icon>

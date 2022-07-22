@@ -3,8 +3,8 @@
 import React, { useEffect, useState } from "react";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-// import { collection, addDoc } from "firebase/firestore";
 import { doc, setDoc } from "firebase/firestore";
+import { isEmpty } from "lodash";
 
 import "swiper/css";
 import "swiper/css/effect-cards";
@@ -37,26 +37,18 @@ const Home = () => {
     const recipes = [];
 
     try {
-      const response = await axiosInstance.get(
-        `random?apiKey=${process.env.REACT_APP_SPOONACULAR_API_KEY}`
-      );
-      recipes.push(response.data.recipes[0]);
-      const recipe = response.data.recipes[0];
-      await setDoc(doc(db, "recipes", `${recipe.id}`), recipe);
+      for (let i = 0; i < 3; i++) {
+        const response = await axiosInstance.get(
+          `random?apiKey=${process.env.REACT_APP_SPOONACULAR_API_KEY}`
+        );
+        recipes.push(response.data.recipes[0]);
+        const recipe = response.data.recipes[0];
+        await setDoc(doc(db, "recipes", `${recipe.id}`), recipe);
+      }
     } catch {
       setIsLoading(true);
       setHasError(true);
     }
-
-    // await addDoc(collection(db, "recipes"), {
-    //   recipe: response.data.recipes[0],
-    // });
-    // for (let i = 0; i < 3; i++) {
-    //   const response = await axiosInstance.get(
-    //     `random?apiKey=${process.env.REACT_APP_SPOONACULAR_API_KEY}`
-    //   );
-    //   recipes.push(response.data.recipes[0]);
-    // }
     setRecipeList(recipes);
     setIsLoading(false);
   };
@@ -64,7 +56,11 @@ const Home = () => {
   const recipes = useRecoilValue(recipeListAtom);
 
   useEffect(() => {
-    requestRecipe();
+    if (isEmpty(recipes)) {
+      requestRecipe();
+    } else {
+      setIsLoading(false);
+    }
   }, []);
 
   return (
@@ -91,20 +87,20 @@ const Home = () => {
           </SwiperSlide>
 
           <SwiperSlide>
-            <CarouselCard recipe={recipes[0]} />
+            <CarouselCard recipe={recipes[1]} />
           </SwiperSlide>
 
           <SwiperSlide>
-            <CarouselCard recipe={recipes[0]} />
+            <CarouselCard recipe={recipes[2]} />
           </SwiperSlide>
         </Swiper>
       ) : (
         <>
           <CarouselCard recipe={recipes[0]} />
 
-          <CarouselCard recipe={recipes[0]} />
+          <CarouselCard recipe={recipes[1]} />
 
-          <CarouselCard recipe={recipes[0]} />
+          <CarouselCard recipe={recipes[2]} />
         </>
       )}
     </Container>
