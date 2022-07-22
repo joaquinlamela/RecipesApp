@@ -8,6 +8,8 @@ const Container = styled.div`
   padding-top: 40px;
 
   ${(props) => props.isSmallScreen && `flex-direction: column; gap: 20px;`}
+  ${(props) => props.hasError && `flex-direction: column;`}
+
 
   .swiper {
     ${MEDIA.tb`

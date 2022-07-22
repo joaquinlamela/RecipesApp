@@ -11,9 +11,11 @@ import "swiper/css/effect-cards";
 import { EffectCards } from "swiper";
 
 import CarouselCard from "../../Components/CarouselCard";
+import Loading from "../../Components/Loading";
 
 import Container from "./styles/Container";
-import Loading from "../../Components/Loading";
+import ErrorMessage from "./styles/ErrorMessage";
+
 import useWindowSize from "../../Hooks/useWindowSize";
 import { BASE } from "../../layout";
 import { useRecoilState, useRecoilValue } from "recoil";
@@ -26,18 +28,25 @@ const Home = () => {
   const [width] = useWindowSize();
   const isSmallScreen = width < BASE.breakpoints.tb;
   const [isLoading, setIsLoading] = useState(true);
+  const [hasError, setHasError] = useState(false);
 
   const [_, setRecipeList] = useRecoilState(recipeListAtom);
 
   const requestRecipe = async () => {
     setIsLoading(true);
     const recipes = [];
-    const response = await axiosInstance.get(
-      `random?apiKey=${process.env.REACT_APP_SPOONACULAR_API_KEY}`
-    );
-    recipes.push(response.data.recipes[0]);
-    const recipe = response.data.recipes[0];
-    await setDoc(doc(db, "recipes", `${recipe.id}`), recipe);
+
+    try {
+      const response = await axiosInstance.get(
+        `random?apiKey=${process.env.REACT_APP_SPOONACULAR_API_KEY}`
+      );
+      recipes.push(response.data.recipes[0]);
+      const recipe = response.data.recipes[0];
+      await setDoc(doc(db, "recipes", `${recipe.id}`), recipe);
+    } catch {
+      setIsLoading(true);
+      setHasError(true);
+    }
 
     // await addDoc(collection(db, "recipes"), {
     //   recipe: response.data.recipes[0],
@@ -59,9 +68,17 @@ const Home = () => {
   }, []);
 
   return (
-    <Container isSmallScreen={isSmallScreen}>
+    <Container isSmallScreen={isSmallScreen} hasError={hasError}>
       {isLoading ? (
-        <Loading id="loading-icon" />
+        <>
+          <Loading id="loading-icon" />
+          {hasError && (
+            <ErrorMessage>
+              Apologies for the inconvenience caused. There are currently no
+              more random recipes available.
+            </ErrorMessage>
+          )}
+        </>
       ) : !isSmallScreen ? (
         <Swiper
           effect={"cards"}
