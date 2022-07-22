@@ -23,6 +23,11 @@ const RecipeInformation = styled.div`
   ${MEDIA.xl`
     gap: 26px;
     padding: 50px;
+    width: 550px;
+  `}
+
+  ${MEDIA.xxl`
+    width: 580px;
   `}
 `;
 
