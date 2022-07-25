@@ -45,12 +45,12 @@ const Home = () => {
         const recipe = response.data.recipes[0];
         await setDoc(doc(db, "recipes", `${recipe.id}`), recipe);
       }
+      setIsLoading(false);
     } catch {
       setIsLoading(true);
       setHasError(true);
     }
     setRecipeList(recipes);
-    setIsLoading(false);
   };
 
   const recipes = useRecoilValue(recipeListAtom);
