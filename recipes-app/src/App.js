@@ -4,6 +4,7 @@ import { HashRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./Containers/Home/index";
 import Navbar from "./Components/Navbar";
 import Contact from "./Containers/Contact";
+import RecipeDetail from "./Containers/RecipeDetail";
 import Footer from "./Components/Footer";
 import Sidebar from "./Components/SideBar";
 
@@ -22,6 +23,7 @@ function App() {
         <Route path="/" element={<Home />} exact />
         <Route path="/contact" element={<Contact />} exact />
         <Route path="/random" element={<Contact />} exact />
+        <Route path="/recipe/:id" element={<RecipeDetail />} exact />
       </Routes>
       <Footer />
     </Router>

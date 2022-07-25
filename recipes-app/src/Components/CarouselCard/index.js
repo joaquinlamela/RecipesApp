@@ -69,7 +69,7 @@ const CarouselCard = ({ recipe }) => {
             Last update:
             <p>{getCurrentDate()}</p>
           </UpdatedDate>
-          <ViewDetailButton>
+          <ViewDetailButton to={`/recipe/${recipe.id}`}>
             View detail <AiOutlineArrowRight />
           </ViewDetailButton>
         </RecipeFooter>
