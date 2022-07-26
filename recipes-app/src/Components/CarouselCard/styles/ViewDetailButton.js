@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import { MEDIA } from "../../../layout";
+import { Link } from "react-router-dom";
 
-const ViewDetailButton = styled.button`
+const ViewDetailButton = styled(Link)`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -14,6 +15,7 @@ const ViewDetailButton = styled.button`
   letter-spacing: -0.02em;
   color: #ffffff;
   border: none;
+  text-decoration: none;
   svg {
     font-size: 17px;
     margin-left: 20px;
