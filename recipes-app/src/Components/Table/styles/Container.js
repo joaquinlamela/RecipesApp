@@ -11,11 +11,11 @@ const Container = styled.div`
 
   ${MEDIA.xl`
     width: 400px;
-    height: 500px;
+    height: 600px;
   `}
 
   ${MEDIA.xxl`
-    width: 400px;
+    width: 520px;
     height: 700px;
   `}
 `;

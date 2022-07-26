@@ -1,3 +1,2 @@
-export const getDescription = (description) => {
-  console.log(description);
-};
+export const getDescription = (description) =>
+  description.replace(/<\/?[^>]+(>|$)/g, "");

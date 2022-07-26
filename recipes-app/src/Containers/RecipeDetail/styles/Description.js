@@ -7,6 +7,7 @@ const Description = styled.p`
   line-height: 28px;
   color: rgba(0, 0, 0, 0.6);
   text-align: justify;
+  max-width: 1750px;
 `;
 
 export default Description;

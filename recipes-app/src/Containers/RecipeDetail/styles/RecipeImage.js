@@ -7,11 +7,11 @@ const RecipeImage = styled.img`
 
   ${MEDIA.xl`
     width: 840px;
-    height: 500px;
+    height: 600px;
   `}
 
   ${MEDIA.xxl`
-    width: 1100px;
+    width: 1200px;
     height: 700px;
   `}
 `;
