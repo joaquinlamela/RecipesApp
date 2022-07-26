@@ -30,7 +30,7 @@ const CarouselCard = ({ recipe }) => {
   };
 
   const getFoodType = () => {
-    if (recipe.vegetarian) return "Vegetarian";
+    if (recipe.vegetarian && !recipe.vegan) return "Vegetarian";
     if (recipe.vegan) return "Vegan";
     return "Not vegan";
   };
