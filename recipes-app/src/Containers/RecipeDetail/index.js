@@ -25,6 +25,7 @@ import { db } from "../../Firebase/firebaseConfig";
 import { doc, getDoc } from "firebase/firestore";
 import { isEmpty } from "lodash";
 import ErrorMessage from "../Home/styles/ErrorMessage";
+import Ingredient from "../../Components/Ingredient";
 
 const RecipeDetail = () => {
   const params = useParams();
@@ -33,6 +34,7 @@ const RecipeDetail = () => {
   const [recipe, setRecipe] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [recipeSteps, setRecipeSteps] = useState([]);
+  const [recipeIngredients, setRecipeIngredients] = useState([]);
   const [hasError, setHasError] = useState(false);
 
   useEffect(() => {
@@ -44,6 +46,7 @@ const RecipeDetail = () => {
         const data = docSnap.data();
         setRecipe(data);
         setRecipeSteps(data.analyzedInstructions[0].steps);
+        setRecipeIngredients(data.extendedIngredients);
         setIsLoading(false);
       } else {
         setHasError(true);
@@ -56,6 +59,7 @@ const RecipeDetail = () => {
         if (element.id === recipeId) {
           setRecipe(element);
           setRecipeSteps(element.analyzedInstructions[0].steps);
+          setRecipeIngredients(element.extendedIngredients);
         }
       });
       setIsLoading(false);
@@ -136,8 +140,16 @@ const RecipeDetail = () => {
             </RecipeDetailContainer>
             <Description>{getDescription(recipe.summary)}</Description>
           </RecipeInformation>
+
           <RecipeInstructions>
-            <SubTitle small>Directions</SubTitle>
+            <SubTitle>Ingredients</SubTitle>
+            {recipeIngredients.map((ingredient) => (
+              <Ingredient ingredient={ingredient} />
+            ))}
+          </RecipeInstructions>
+
+          <RecipeInstructions>
+            <SubTitle>Directions</SubTitle>
             {recipeSteps.map((step) => (
               <Instruction instruction={step} />
             ))}
