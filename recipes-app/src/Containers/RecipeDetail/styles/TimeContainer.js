@@ -1,8 +1,13 @@
 import styled from "styled-components";
+import { MEDIA } from "../../../layout";
 
 const TimeContainer = styled.div`
-  display: flex;
-  gap: 32px;
+  display: none;
+
+  ${MEDIA.tb`
+    display: flex;
+    gap: 32px;
+  `}
 `;
 
 export default TimeContainer;

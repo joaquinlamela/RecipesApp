@@ -5,6 +5,11 @@ const RecipeImage = styled.img`
   display: flex;
   border-radius: 30px;
 
+  ${MEDIA.lg`
+    width: 500px;
+    height: 600px;
+  `}
+
   ${MEDIA.xl`
     width: 840px;
     height: 600px;
