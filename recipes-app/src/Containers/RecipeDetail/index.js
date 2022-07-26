@@ -17,19 +17,51 @@ import TimeContainer from "./styles/TimeContainer";
 import RecipeImage from "./styles/RecipeImage";
 import RecipeDetailContainer from "./styles/RecipeDetailContainer";
 import Description from "./styles/Description";
+import Loading from "../../Components/Loading";
+import SubTitle from "../../Components/SubTitle";
+import Instruction from "../../Components/Instruction";
+
+import { db } from "../../Firebase/firebaseConfig";
+import { doc, getDoc } from "firebase/firestore";
+import { isEmpty } from "lodash";
+import ErrorMessage from "../Home/styles/ErrorMessage";
 
 const RecipeDetail = () => {
   const params = useParams();
   const recipeId = parseInt(params.id);
   const recipes = useRecoilValue(recipeListAtom);
   const [recipe, setRecipe] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
+  const [recipeSteps, setRecipeSteps] = useState([]);
+  const [hasError, setHasError] = useState(false);
 
   useEffect(() => {
-    recipes.forEach((element) => {
-      if (element.id === recipeId) {
-        setRecipe(element);
+    const fetchRecipe = async () => {
+      setIsLoading(true);
+      const docRef = doc(db, "recipes", `${recipeId}`);
+      const docSnap = await getDoc(docRef);
+      if (docSnap.exists()) {
+        const data = docSnap.data();
+        setRecipe(data);
+        setRecipeSteps(data.analyzedInstructions[0].steps);
+        setIsLoading(false);
+      } else {
+        setHasError(true);
       }
-    });
+    };
+
+    if (!isEmpty(recipes)) {
+      setIsLoading(true);
+      recipes.forEach((element) => {
+        if (element.id === recipeId) {
+          setRecipe(element);
+          setRecipeSteps(element.analyzedInstructions[0].steps);
+        }
+      });
+      setIsLoading(false);
+    } else {
+      fetchRecipe().catch(console.error);
+    }
   }, [recipeId, recipes]);
 
   const getTypesOfRecipe = () => {
@@ -63,36 +95,55 @@ const RecipeDetail = () => {
 
   return (
     <Container>
-      <RecipeInformation>
-        <Title>{recipe.title}</Title>
-        <TimeContainer>
-          <Toggle
-            icon={ICONS_TYPES.timer}
-            title="Cook time"
-            value={`${recipe.readyInMinutes} minutes`}
-          />
-          <Toggle
-            icon={ICONS_TYPES.like}
-            title="Liked by"
-            value={`${recipe.aggregateLikes} people`}
-          />
-          <Toggle
-            icon={ICONS_TYPES.cook}
-            title="Healthy"
-            value={recipes.veryHealthy ? "Yes" : "No"}
-          />
-        </TimeContainer>
-        <RecipeDetailContainer>
-          <RecipeImage src={recipe.image} />
-          <Table
-            items={getTypesOfRecipe()}
-            tableTitle="Recipe details"
-            tableFooter="This information is added by users, take it with caution and check the data."
-          />
-        </RecipeDetailContainer>
-        <Description>{getDescription(recipe.summary)}</Description>
-      </RecipeInformation>
-      <RecipeInstructions></RecipeInstructions>
+      {isLoading ? (
+        <>
+          <Loading id="loading-icon" />
+          {hasError && (
+            <ErrorMessage>
+              Apologies for the inconvenience caused. We have not found the
+              recipe you were looking for.
+            </ErrorMessage>
+          )}
+        </>
+      ) : (
+        <>
+          <RecipeInformation>
+            <Title>{recipe.title}</Title>
+            <TimeContainer>
+              <Toggle
+                icon={ICONS_TYPES.timer}
+                title="Cook time"
+                value={`${recipe.readyInMinutes} minutes`}
+              />
+              <Toggle
+                icon={ICONS_TYPES.like}
+                title="Liked by"
+                value={`${recipe.aggregateLikes} people`}
+              />
+              <Toggle
+                icon={ICONS_TYPES.cook}
+                title="Healthy"
+                value={recipes.veryHealthy ? "Yes" : "No"}
+              />
+            </TimeContainer>
+            <RecipeDetailContainer>
+              <RecipeImage src={recipe.image} />
+              <Table
+                items={getTypesOfRecipe()}
+                tableTitle="Recipe details"
+                tableFooter="This information is added by users, take it with caution and check the data."
+              />
+            </RecipeDetailContainer>
+            <Description>{getDescription(recipe.summary)}</Description>
+          </RecipeInformation>
+          <RecipeInstructions>
+            <SubTitle small>Directions</SubTitle>
+            {recipeSteps.map((step) => (
+              <Instruction instruction={step} />
+            ))}
+          </RecipeInstructions>
+        </>
+      )}
     </Container>
   );
 };
