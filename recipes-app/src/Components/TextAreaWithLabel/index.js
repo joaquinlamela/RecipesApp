@@ -7,11 +7,15 @@ import TextArea from "../TextArea";
 import Container from "../InputWithLabel/styles/Container";
 import Label from "../InputWithLabel/styles/Label";
 
-const TextAreaWithLabel = ({ label, placeholder }) => {
+const TextAreaWithLabel = ({ label, placeholder, onChange, value }) => {
   return (
     <Container>
       <Label>{label}</Label>
-      <TextArea placeholder={placeholder} />
+      <TextArea
+        placeholder={placeholder}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+      />
     </Container>
   );
 };
@@ -19,6 +23,8 @@ const TextAreaWithLabel = ({ label, placeholder }) => {
 TextAreaWithLabel.propTypes = {
   placeholder: PropTypes.string,
   label: PropTypes.string,
+  onChange: PropTypes.func,
+  value: PropTypes.string,
 };
 
 export default TextAreaWithLabel;
