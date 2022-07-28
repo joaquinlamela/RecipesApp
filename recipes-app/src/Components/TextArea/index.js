@@ -3,7 +3,8 @@ import { MEDIA } from "../../layout";
 
 const TextArea = styled.textarea`
   background: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border: ${(props) =>
+    props.error ? "1px solid #e60f36" : "1px solid rgba(0, 0, 0, 0.1)"};
   border-radius: 16px;
   height: 200px;
   font-family: "Inter";

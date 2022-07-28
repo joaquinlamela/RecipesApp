@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { Notify } from "notiflix/build/notiflix-notify-aio";
+import { collection, addDoc } from "firebase/firestore";
 
 import Title from "../../Components/Title";
 import InputWithLabel from "../../Components/InputWithLabel";
@@ -17,6 +19,9 @@ import TextAreaWithLabel from "../../Components/TextAreaWithLabel";
 import Button from "../../Components/Button";
 import NewsletterCard from "../../Components/NewsletterCard";
 
+import { db } from "../../Firebase/firebaseConfig";
+import { isEmpty } from "lodash";
+
 const Contact = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -26,12 +31,33 @@ const Contact = () => {
 
   const handleContactForm = async (e) => {
     e.preventDefault();
+
+    try {
+      await addDoc(collection(db, "contacts"), {
+        email: email,
+        enquiryType: enquiry,
+        message: message,
+        name: name,
+        subject: subject,
+      });
+      Notify.success("Your data was sent successfully.");
+    } catch {
+      Notify.failure("An error ocurred, try again later.");
+    }
+
     setName("");
     setEmail("");
     setSubject("");
     setEnquiry("");
     setMessage("");
   };
+
+  const handleButtonState = () =>
+    isEmpty(name) ||
+    isEmpty(email) ||
+    isEmpty(subject) ||
+    isEmpty(enquiry) ||
+    isEmpty(message);
 
   return (
     <Container>
@@ -84,7 +110,11 @@ const Contact = () => {
             />
           </ContactContainer>
         </Form>
-        <Button type="submit" form="contact-form">
+        <Button
+          type="submit"
+          form="contact-form"
+          disabled={handleButtonState()}
+        >
           Submit <BiSend />
         </Button>
       </FormContainer>

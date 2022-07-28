@@ -6,7 +6,7 @@ const Button = styled.button`
   align-items: center;
   justify-content: center;
   text-align: center;
-  background: #000000;
+  background: ${(props) => (props.disabled ? "#b8b9ba" : "#000000")};
   border-radius: 16px;
   width: 160px;
   height: 45px;
@@ -18,13 +18,16 @@ const Button = styled.button`
   letter-spacing: -0.02em;
   color: #ffffff;
   border: none;
+
   svg {
     font-size: 17px;
     margin-left: 10px;
   }
-  cursor: pointer;
+
+  cursor: ${(props) => (props.disabled ? "not-allowed" : "pointer")};
+
   :hover {
-    background: #ff7426;
+    background: ${(props) => (props.disabled ? "#6e6c6b" : "#ff7426")};
   }
 
   ${MEDIA.md`
