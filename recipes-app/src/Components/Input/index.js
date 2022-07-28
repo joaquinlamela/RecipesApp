@@ -25,6 +25,7 @@ const Input = styled.input`
     outline: none;
     border: ${(props) => (props.noBorder ? "none" : "1px solid #ff7426")};
   }
+  ${(props) => props.error && `border: 1px solid #e60f36;`};
 
   ${MEDIA.xs`
     width: ${(props) => (props.small ? "250px" : "300px")};

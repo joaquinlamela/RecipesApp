@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const Form = styled.div`
+const Form = styled.form`
   display: flex;
   padding-top: 40px;
   gap: 40px;
