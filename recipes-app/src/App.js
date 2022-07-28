@@ -7,6 +7,7 @@ import Contact from "./Containers/Contact";
 import RecipeDetail from "./Containers/RecipeDetail";
 import Footer from "./Components/Footer";
 import Sidebar from "./Components/SideBar";
+import Recipes from "./Containers/Recipes";
 
 function App() {
   const [isOpen, setIsOpen] = useState(false);
@@ -22,7 +23,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} exact />
         <Route path="/contact" element={<Contact />} exact />
-        <Route path="/random" element={<Contact />} exact />
+        <Route path="/recipes" element={<Recipes />} exact />
         <Route path="/recipe/:id" element={<RecipeDetail />} exact />
       </Routes>
       <Footer />

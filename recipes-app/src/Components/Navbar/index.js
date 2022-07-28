@@ -38,7 +38,7 @@ const Navbar = ({ openSidebar }) => {
             </NavItem>
             <NavItem>
               <NavLink
-                to="/random"
+                to="/recipes"
                 smooth={true}
                 duration={500}
                 spy={true}
