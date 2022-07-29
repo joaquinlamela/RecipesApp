@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
-import { HashRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./Containers/Home/index";
 import Navbar from "./Components/Navbar";
 import Contact from "./Containers/Contact";
@@ -17,7 +17,7 @@ function App() {
   };
 
   return (
-    <Router>
+    <BrowserRouter>
       <Sidebar isOpen={isOpen} toggle={toggle} />
       <Navbar openSidebar={toggle} />
       <Routes>
@@ -27,7 +27,7 @@ function App() {
         <Route path="/recipe/:id" element={<RecipeDetail />} exact />
       </Routes>
       <Footer />
-    </Router>
+    </BrowserRouter>
   );
 }
 
