@@ -18,6 +18,7 @@ import RecipesContainer from "./styles/RecipesContainer";
 import { db } from "../../Firebase/firebaseConfig";
 import { getFoodType } from "../../utils/functions";
 import Loading from "../../Components/Loading";
+import Title from "../../Components/Title";
 
 const Recipes = () => {
   const [recipes, setRecipes] = useState([]);
@@ -64,23 +65,27 @@ const Recipes = () => {
       {isLoading ? (
         <Loading id="loading-icon" />
       ) : (
-        <InfiniteScroll
-          dataLength={recipes.length}
-          next={getNextRecipes}
-          hasMore={true}
-        >
-          <RecipesContainer>
-            {recipes.map((recipe) => (
-              <RecipeCard
-                image={recipe.image}
-                name={recipe.title}
-                type={getFoodType(recipe)}
-                time={recipe.readyInMinutes}
-                id={recipe.id}
-              />
-            ))}
-          </RecipesContainer>
-        </InfiniteScroll>
+        <>
+          <Title>Recipes</Title>
+
+          <InfiniteScroll
+            dataLength={recipes.length}
+            next={getNextRecipes}
+            hasMore={true}
+          >
+            <RecipesContainer>
+              {recipes.map((recipe) => (
+                <RecipeCard
+                  image={recipe.image}
+                  name={recipe.title}
+                  type={getFoodType(recipe)}
+                  time={recipe.readyInMinutes}
+                  id={recipe.id}
+                />
+              ))}
+            </RecipesContainer>
+          </InfiniteScroll>
+        </>
       )}
     </Container>
   );

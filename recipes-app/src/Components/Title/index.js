@@ -8,6 +8,7 @@ const Title = styled.span`
   line-height: 77px;
   letter-spacing: -0.04em;
   color: #000000;
+  align-self: center;
 
   ${MEDIA.xs`
     font-size: ${(props) => (props.small ? "22px" : "40px")};

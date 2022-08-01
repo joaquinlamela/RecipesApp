@@ -7,6 +7,7 @@ const StyledTitle = styled.p`
   line-height: 26px;
   letter-spacing: -0.04em;
   color: #000000;
+  text-align: center;
 `;
 
 export default StyledTitle;

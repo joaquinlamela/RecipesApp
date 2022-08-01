@@ -7,7 +7,7 @@ const Container = styled(Link)`
   gap: 16px;
   background: transparent;
   width: 290px;
-  height: 320px;
+  height: 340px;
   transition: all 0.2s ease-in-out;
   border-radius: 20px;
   align-items: center;

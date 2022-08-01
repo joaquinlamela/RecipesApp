@@ -5,6 +5,7 @@ const RecipesContainer = styled.div`
   grid-template-columns: repeat(5, 1fr);
   grid-gap: 50px;
   overflow: hidden;
+  padding-top: 40px;
 `;
 
 export default RecipesContainer;
