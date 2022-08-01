@@ -66,7 +66,7 @@ const Recipes = () => {
         <Loading id="loading-icon" />
       ) : (
         <>
-          <Title>Recipes</Title>
+          <Title small>Recipes</Title>
 
           <InfiniteScroll
             dataLength={recipes.length}
