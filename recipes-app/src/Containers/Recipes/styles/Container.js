@@ -10,6 +10,7 @@ const Container = styled.div`
   ${MEDIA.tb`
     padding: 40px 80px;
   `}
+  overflow: overlay;
 `;
 
 export default Container;
