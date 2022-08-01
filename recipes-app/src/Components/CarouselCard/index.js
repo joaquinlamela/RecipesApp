@@ -2,6 +2,8 @@ import React from "react";
 
 import PropTypes from "prop-types";
 
+import { getFoodType } from "../../utils/functions";
+
 import Container from "./styles/Container";
 import RecipeInformation from "./styles/RecipeInformation";
 import HotRecipe from "./styles/HotRecipe";
@@ -29,12 +31,6 @@ const CarouselCard = ({ recipe }) => {
     return `${month < 10 ? `0${month}` : `${month}`}/${date}/${year}`;
   };
 
-  const getFoodType = () => {
-    if (recipe.vegetarian && !recipe.vegan) return "Vegetarian";
-    if (recipe.vegan) return "Vegan";
-    return "Not vegan";
-  };
-
   const getDescription = () => {
     let description = recipe.summary;
     const index = description.indexOf(".");
@@ -60,7 +56,7 @@ const CarouselCard = ({ recipe }) => {
             <Icon>
               <GiForkKnifeSpoon />
             </Icon>
-            {getFoodType()}
+            {getFoodType(recipe)}
           </Toggle>
         </RecipeToggle>
 

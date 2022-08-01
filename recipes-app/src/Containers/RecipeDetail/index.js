@@ -53,20 +53,20 @@ const RecipeDetail = () => {
       }
     };
 
-    if (!isEmpty(recipes)) {
-      setIsLoading(true);
-      recipes.forEach((element) => {
-        if (element.id === recipeId) {
-          setRecipe(element);
-          setRecipeSteps(element.analyzedInstructions[0].steps);
-          setRecipeIngredients(element.extendedIngredients);
-        }
-      });
-      setIsLoading(false);
-    } else {
+    setIsLoading(true);
+    recipes.forEach((element) => {
+      if (element.id === recipeId) {
+        setRecipe(element);
+        setRecipeSteps(element.analyzedInstructions[0].steps);
+        setRecipeIngredients(element.extendedIngredients);
+      }
+    });
+    setIsLoading(false);
+
+    if (isEmpty(recipe)) {
       fetchRecipe().catch(console.error);
     }
-  }, [recipeId, recipes]);
+  }, [recipe, recipeId, recipes]);
 
   const getTypesOfRecipe = () => {
     const items = [];
