@@ -33,10 +33,10 @@ const Contact = () => {
     e.preventDefault();
 
     try {
-      await addDoc(collection(db, "contacts"), {
+      await addDoc(collection(db, "comments"), {
         email: email,
         enquiryType: enquiry,
-        message: message,
+        text: message,
         name: name,
         subject: subject,
       });
