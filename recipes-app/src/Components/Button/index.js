@@ -19,6 +19,8 @@ const Button = styled.button`
   color: #ffffff;
   border: none;
 
+  ${(props) => props.alignSelf && `align-self: center;`}
+
   svg {
     font-size: 17px;
     margin-left: 10px;
